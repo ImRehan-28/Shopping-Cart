@@ -40,7 +40,7 @@ const Product = ({ post }) => {
 
       <div className='flex w-[85%] justify-between mt-7 mb-4'>
         <div className='text-[13px] text-green-700 font-medium'><p>${post.price}</p></div>
-
+        
         {
           cart.some((p) => p.id === post.id) ?
             (<button onClick={removeFromCart} className='border-2 text-gray-700 rounded-full text-[12px] font-semibold p-1 px-3 uppercase
