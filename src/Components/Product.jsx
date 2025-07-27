@@ -32,7 +32,7 @@ const Product = ({ post }) => {
         <p>{post.title.substring(0, 15)}...</p> </div>
 
       <div className='px-auto w-[70%] text-[10px] mt-4'>
-        <p>{post.description.split(" ").slice(0,10).join(" ")+ "..."}</p>
+        <p>{post.description.split(" ").slice(0, 10).join(" ") + "..."}</p>
         {/* <span onClick={readmorehandler}>{readmore?'Show less':'read more'}</span> */}
       </div>
 
@@ -40,7 +40,7 @@ const Product = ({ post }) => {
 
       <div className='flex w-[85%] justify-between mt-7 mb-4'>
         <div className='text-[13px] text-green-700 font-medium'><p>${post.price}</p></div>
-        
+
         {
           cart.some((p) => p.id === post.id) ?
             (<button onClick={removeFromCart} className='border-2 text-gray-700 rounded-full text-[12px] font-semibold p-1 px-3 uppercase
