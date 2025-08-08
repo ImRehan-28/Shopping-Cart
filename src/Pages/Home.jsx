@@ -30,7 +30,7 @@ const Home = () => {
   return (
     <div>
       {
-        loading ? <Spinner /> :
+        loading ? <div className='flex justify-center items-center h-lvh'><Spinner/></div> :
           posts.length > 0 ?
             (<div className=' w-screen'>
               <div className='w-[84%]  mx-auto flex flex-wrap justify-center mt-5'>
