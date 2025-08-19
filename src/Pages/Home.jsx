@@ -30,10 +30,10 @@ const Home = () => {
   return (
     <div>
       {
-        loading ? <div className='flex justify-center items-center h-lvh'><Spinner/></div> :
+        loading ? <div className='flex justify-center items-center h-lvh'><Spinner /></div> :
           posts.length > 0 ?
-            (<div className=' w-screen'>
-              <div className='w-[84%]  mx-auto flex flex-wrap justify-center mt-5'>
+            (<div className='w-screen mb-6'>
+              <div className="w-[90%] sm:w-[84%] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-5">
                 {
                   posts.map((post) => (
                     <Product key={post.id} post={post} />

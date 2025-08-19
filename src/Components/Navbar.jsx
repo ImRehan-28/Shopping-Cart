@@ -11,7 +11,7 @@ const Navbar = () => {
 
         <NavLink to="/">
           <div>
-            <img src="../logo.png" className='h-14 my-2' />
+            <img src="../logo.png" className="h-10 sm:h-10 md:h-14 lg:h-16 w-auto my-2 object-contain" />
           </div>
         </NavLink>
 

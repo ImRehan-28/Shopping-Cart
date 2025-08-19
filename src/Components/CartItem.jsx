@@ -1,48 +1,57 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
-import toast from 'react-hot-toast';
+import React from "react";
+import toast from "react-hot-toast";
 import { MdDelete } from "react-icons/md";
-import { useDispatch, useSelector } from 'react-redux'
-import { add, remove } from '../redux/Slices/Cartslice'
-const CartItem = ({ item, itemIndex }) => {
+import { useDispatch, useSelector } from "react-redux";
+import { remove } from "../redux/Slices/Cartslice";
 
+const CartItem = ({ item }) => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   const removeFromCart = () => {
     dispatch(remove(item.id));
-    toast.error("Item Removed from cart")
-  }
+    toast.error("Item Removed from cart");
+  };
 
   return (
+    <div className="flex flex-col sm:flex-row border-b w-full py-4 px-3 gap-4">
 
-    <div className='flex border-b w-[500px] py-4 px-3 '>
-
-      <div className=''>
-        <img src={item.image} className='h-[200px] w-[350px] object-contain' />
+      {/* Image */}
+      <div className="flex-shrink-0 flex justify-center sm:justify-start">
+        <img
+          src={item.image}
+          alt={item.title}
+          className="h-[150px] sm:h-[200px] w-auto max-w-[250px] object-contain"
+        />
       </div>
 
-      <div className='ml-8 flex flex-col gap-y-4'>
+      {/* Details */}
+      <div className="flex flex-col gap-y-3 sm:ml-6 w-full">
+        {/* Title */}
+        <h1 className="font-bold text-base sm:text-lg">{item.title}</h1>
 
-        <h1 className='font-bold text-[19px]'>{item.title}</h1>
-        <h1 className='text-[14px]'>{item.description.substring(0, 108)}...</h1>
+        {/* Description */}
+        <p className="text-sm sm:text-[14px] text-gray-600">
+          {item.description.substring(0, 100)}...
+        </p>
 
-        <div className='flex items-center justify-between w-[90%] text-green-700 font-semibold '>
-          <p className='font-bold'>${item.price}</p>
+        {/* Price & Delete */}
+        <div className="flex items-center justify-between w-full text-green-700 font-semibold mt-2">
+          <p className="font-bold text-sm sm:text-base">${item.price}</p>
 
-          {
-            cart.some((p) => p.id === item.id) && (
-              <div onClick={removeFromCart} className='bg-red-300 text-red-800 hover:bg-red-400 p-1 rounded-2xl'>
-                <MdDelete />
-              </div>)
-          }
-
+          {cart.some((p) => p.id === item.id) && (
+            <button
+              onClick={removeFromCart}
+              className="bg-red-300 text-red-800 hover:bg-red-400 p-2 rounded-full flex items-center justify-center"
+            >
+              <MdDelete />
+            </button>
+          )}
         </div>
-
       </div>
-
     </div>
-  )
-}
+  );
+};
 
-export default CartItem
+export default CartItem;
